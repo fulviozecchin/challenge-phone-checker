@@ -28,8 +28,9 @@
 	<form th:action="@{/uploadExcelFile}" enctype="multipart/form-data" method="post">
 		<p>
 		<h4>Validazione massiva</h4>
-			<label for="phoneNumber">Carica il file:</label>
-			<input type="file" id="loadFile" name="loadFile"><br><br>
+			<label for="file">Carica il file:</label>
+			<input type="file" id="file" name="file"
+				accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"><br><br>
 		</p>
 		<input type="submit" value="Valida">
 	</form>

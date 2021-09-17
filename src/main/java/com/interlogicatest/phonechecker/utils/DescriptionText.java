@@ -10,16 +10,17 @@ package com.interlogicatest.phonechecker.utils;
 public enum DescriptionText {
 	
 	//Correction text
-	ADDED_SUFFIX("Aggiunto il suffisso '27' al numero"),
+	ADDED_PREFIX("Aggiunto il prefisso (27) al numero."),
+	REMOVED_EXCESS("Identificato numero valido e rimosso ciò che e' primta/dopo le 11 cifre."),
 
 	//Error text
 	CONTAINS_WORDS("Il numero contiene del testo"),
-	FEW_DIGITS("Il numero e' troppo corto (Lunghezza con l'aggiunta del suffisso e' minore di 11"),
-	TOO_MANY_DIGITS("Il numero e' troppo grande (Lunghezza maggiore di 11)"),
-	WRONG_SUFFIX("Il numero non e' nel formato corretto. Il suffisso e' errato"),
+	FEW_DIGITS("Il numero e' troppo corto (Lunghezza con l'aggiunta del prefisso e' minore di 11)."),
+	TOO_MANY_DIGITS("Il numero e' troppo grande (Lunghezza maggiore di 11)."),
+	WRONG_SUFFIX("Il numero non e' nel formato corretto. Il prefisso e' errato."),
 	
 	//Generic Default Error
-	GENERIC_ERROR("Errore generico nel tentare di validare il numero.")
+	GENERIC_ERROR("Errore generico. Il numero non e' nel formato corretto (contiene simboli e/o lettere).")
 	;
 	
 	DescriptionText(final String text) {

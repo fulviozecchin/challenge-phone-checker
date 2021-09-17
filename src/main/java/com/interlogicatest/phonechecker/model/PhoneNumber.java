@@ -42,7 +42,7 @@ public class PhoneNumber {
 	 * @param isValid is the boolean if phone number is correct
 	 * @param correctionOrErrorString is the String with text with correction or with errors
 	 */
-	public PhoneNumber(String id, String number, boolean isValid, String correctionOrErrorString) {
+	private PhoneNumber(String id, String number, boolean isValid, String correctionOrErrorString) {
 		this.id = id;
 		this.number = number;
 		this.isValid = isValid;
