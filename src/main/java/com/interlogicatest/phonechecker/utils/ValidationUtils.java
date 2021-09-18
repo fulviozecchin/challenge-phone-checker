@@ -27,12 +27,12 @@ public class ValidationUtils {
 	 * @return PhoneNumber is a model (correct or wrong)
 	 * 
 	 */
-	public PhoneNumber validateNumber(String id, String number) {
+	public static PhoneNumber validateNumber(String id, String number) {
 		
-		//se inizia con 27
+		//If starts with 27
 		if(ValidationUtils.checkPrefix(number)) {
 			
-			//se == 11 e solo numeri è OK
+			//if == 11 and contains only digits is OK
 			if(ValidationUtils.hasCorrectLengthAndOnlyDigits(number)) {
 				PhoneNumber phoneNumber = new PhoneNumber.Builder(id, number)
 						.valid(true)
@@ -40,13 +40,13 @@ public class ValidationUtils {
 				return phoneNumber;
 			}
 			
-			//altrimenti prendi i primi 11
+			//else take first 11 chars
 			else {
-				//se è > 11
+				//if is > 11
 				if(ValidationUtils.checkIsBig(number)) {
-					//prendi i primi 11 caratteri
+					//take first 11 chars
 					String cutNumber = number.substring(0, 11);
-					//e se solo numeri è OK
+					//and if are only digits is OK
 					if(ValidationUtils.hasOnlyDigits(cutNumber)) {
 						PhoneNumber phoneNumber = new PhoneNumber.Builder(id, cutNumber)
 								.valid(true)
@@ -58,10 +58,10 @@ public class ValidationUtils {
 			}
 		}
 		
-		//altrimenti se == 9 e solo numeri
+		//else if == 9 and contains only digits
 		else if(ValidationUtils.checkMissingPrefix(number)
 				&& ValidationUtils.hasOnlyDigits(number)) {
-			//aggiungi 27 ed è OK
+			//add prefix 27 and is OK
 			String correctedNum = ValidationUtils.addPrefix(number);
 			PhoneNumber phoneNumber = new PhoneNumber.Builder(id, correctedNum)
 					.valid(true)
@@ -70,10 +70,10 @@ public class ValidationUtils {
 			return phoneNumber;
 		}
 
-		//altrimenti se < 9 e solo numeri
+		//else if < 9 and contains only digits
 		else if(ValidationUtils.checkIsSmall(number)
 				&& ValidationUtils.hasOnlyDigits(number)) {
-			//non è OK (troppo piccolo)
+			//is NOT OK (too small)
 			PhoneNumber phoneNumber = new PhoneNumber.Builder(id, number)
 					.valid(false)
 					.textCorrectionError(TextUtilsEnum.FEW_DIGITS.getText())
@@ -81,10 +81,10 @@ public class ValidationUtils {
 			return phoneNumber;
 		}
 		
-		//altrimenti se == 11 e solo numeri
+		//else if == 11 and contains only digits
 		else if(ValidationUtils.checkLength(number)
 				&& ValidationUtils.hasOnlyDigits(number)) {
-			//non è OK (suffisso sbagliato)
+			//is NOT OK (wrong prefix)
 			PhoneNumber phoneNumber = new PhoneNumber.Builder(id, number)
 					.valid(false)
 					.textCorrectionError(TextUtilsEnum.WRONG_SUFFIX.getText())
@@ -92,10 +92,10 @@ public class ValidationUtils {
 			return phoneNumber;
 		}
 		
-		//altrimenti se > 11 e solo numeri 
+		//else if > 11 and contains only digits
 		else if(ValidationUtils.checkIsBig(number)
 				&& ValidationUtils.hasOnlyDigits(number)) {
-			//non è OK (numero troppo lungo)
+			//is NOT OK (too long)
 			PhoneNumber phoneNumber = new PhoneNumber.Builder(id, number)
 					.valid(false)
 					.textCorrectionError(TextUtilsEnum.TOO_MANY_DIGITS.getText())
@@ -103,12 +103,12 @@ public class ValidationUtils {
 			return phoneNumber;
 		}
 		
-		//ultimo tentativo
+		//last chance
 		else {
-			//infine pulisco la stringa da tutto cio' che non e' una cifra e provo a validarla
+			//clean the string from everything that is not a digit and try to validate it
 			String clearNumber = ValidationUtils.clearString(number);
 			
-			//se la stringa che rimane inizia con 27 ed e' lunga 11 ok
+			//if remains string strarts with 27 and is exactly 11 chars it's OK
 			if(ValidationUtils.checkPrefix(clearNumber)
 					&& ValidationUtils.checkLength(clearNumber)) {
 				PhoneNumber phoneNumber = new PhoneNumber.Builder(id, clearNumber)
@@ -131,12 +131,12 @@ public class ValidationUtils {
 		return number.replaceAll(REGEX_FOR_REMOVE_NOT_NUMBER, "");
 	}
 	
-	//Se uguale a 11 e solo numeri
+	//If length is 11 and contains only digits
 	public static boolean hasCorrectLengthAndOnlyDigits(String number) {
 		return ( (number.length() == 11) && hasOnlyDigits(number) );
 	}
 	
-	//Se contiene solo numeri
+	//If contains only digits
 	public static boolean hasOnlyDigits(String number) {
 		return number.matches(REGEX_FOR_IDENTIFY_NUMBER);
 	}

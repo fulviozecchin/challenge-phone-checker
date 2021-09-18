@@ -1,24 +1,30 @@
 package com.interlogicatest.phonechecker.model;
 
+import javax.persistence.*;
+
 /**
- * This class represent the row of excel to parse.
- * It has the row ID and relative number
+ * This class represent the Entity of phone number.
+ * It's contains the builder pattern to create specific object.
  * 
  * @author Fulvio Zecchin
  *
  */
+@Entity
+@Table(name = "phonenumbers")
 public class PhoneNumber {
 	
 	/**
 	 * The row ID
 	 * 
 	 */
+	@Id
 	private String id;
 	
 	/**
 	 * The phone number
 	 * 
 	 */
+	@Column(name = "number")
 	private String number;
 	
 	/**
@@ -26,6 +32,7 @@ public class PhoneNumber {
 	 * It is true if a number is valid, false otherwise
 	 * 
 	 */
+	@Column(name ="isvalid")
 	private boolean isValid;
 	
 	/**
@@ -33,10 +40,15 @@ public class PhoneNumber {
 	 * or the reason why a number is incorrect.
 	 * 
 	 */
-	private String correctionOrErrorString;
+	@Column(name = "correctionorerror")
+	private String correctionOrError;
+	
+	//protected constructor to create the entity
+	protected PhoneNumber() {};
 	
 	/**
-	 * The public object constructor
+	 * The private object constructor.
+	 * Is mandatory to use the Builder to create an object.
 	 * @param id is the id
 	 * @param number is the phone number
 	 * @param isValid is the boolean if phone number is correct
@@ -46,9 +58,10 @@ public class PhoneNumber {
 		this.id = id;
 		this.number = number;
 		this.isValid = isValid;
-		this.correctionOrErrorString = correctionOrErrorString;
+		this.correctionOrError = correctionOrErrorString;
 	}
 	
+	//Builder design pattern implementation
 	public static class Builder {
 		
 		private String id;
@@ -90,21 +103,16 @@ public class PhoneNumber {
 	public void setNumber(String number) {
 		this.number = number;
 	}
-
 	public boolean isValid() {
 		return isValid;
 	}
-
 	public void setValid(boolean isValid) {
 		this.isValid = isValid;
 	}
-
 	public String getCorrectionOrErrorString() {
-		return correctionOrErrorString;
+		return correctionOrError;
 	}
-
 	public void setCorrectionOrErrorString(String correctionOrErrorString) {
-		this.correctionOrErrorString = correctionOrErrorString;
+		this.correctionOrError = correctionOrErrorString;
 	}
-
 }

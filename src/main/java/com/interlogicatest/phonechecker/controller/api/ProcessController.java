@@ -19,6 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.interlogicatest.phonechecker.model.PhoneNumber;
 import com.interlogicatest.phonechecker.service.ExportExcelService;
+import com.interlogicatest.phonechecker.service.ManageDataService;
+import com.interlogicatest.phonechecker.service.ManageDataServiceImpl;
 import com.interlogicatest.phonechecker.service.ValidationService;
 import com.interlogicatest.phonechecker.utils.ValidationUtils;
 
@@ -30,6 +32,9 @@ public class ProcessController {
 	
 	@Autowired
 	ExportExcelService exportExcelService;
+	
+	@Autowired
+	ManageDataService manageDataService;
 	
 	@RequestMapping("/api/massivechek")
 	public ArrayList<PhoneNumber> massiveCheck() {
@@ -81,6 +86,8 @@ public class ProcessController {
             		if(numValue != null) {
             			
             			PhoneNumber result = validationService.validateNumber(idValueString, numValueString);
+            			
+            			manageDataService.insertNumber(result);
             			
             			if(result.isValid()) correctNumber.add(result);
             			else wrongNumber.add(result);

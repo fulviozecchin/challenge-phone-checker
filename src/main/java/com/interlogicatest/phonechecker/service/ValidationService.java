@@ -1,10 +1,9 @@
 package com.interlogicatest.phonechecker.service;
 
-import org.apache.poi.ss.usermodel.Row;
 import com.interlogicatest.phonechecker.model.PhoneNumber;
 
 /**
- * This interface contains methods which regarding the phone number validation
+ * This interface contains methods which regarding the phone number validation.
  * 
  * @author Fulvio Zecchin
  *
