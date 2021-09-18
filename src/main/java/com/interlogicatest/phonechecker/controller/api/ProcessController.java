@@ -20,7 +20,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.interlogicatest.phonechecker.model.PhoneNumber;
 import com.interlogicatest.phonechecker.service.ExportExcelService;
 import com.interlogicatest.phonechecker.service.ManageDataService;
-import com.interlogicatest.phonechecker.service.ManageDataServiceImpl;
 import com.interlogicatest.phonechecker.service.ValidationService;
 import com.interlogicatest.phonechecker.utils.ValidationUtils;
 
@@ -85,8 +84,10 @@ public class ProcessController {
             		
             		if(numValue != null) {
             			
+            			//validation number
             			PhoneNumber result = validationService.validateNumber(idValueString, numValueString);
             			
+            			//persist object in db
             			manageDataService.insertNumber(result);
             			
             			if(result.isValid()) correctNumber.add(result);

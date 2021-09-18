@@ -19,11 +19,11 @@ public class ManageDataServiceImpl implements ManageDataService {
 		phoneNumberRepository.save(phoneNumber);
 	}
 	
-//	public List<PhoneNumber> getCorrectNumbers() {
-//		return phoneNumberRepository.findByIsvalidTrue();
-//	}
-//	
-//	public List<PhoneNumber> getWrongNumbers() {
-//		return phoneNumberRepository.findByIsvalidFalse();
-//	}
+	public List<PhoneNumber> getCorrectNumbers() {
+		return phoneNumberRepository.findByIsValidTrue();
+	}
+	
+	public List<PhoneNumber> getWrongNumbers() {
+		return phoneNumberRepository.findByIsValidFalse();
+	}
 }
