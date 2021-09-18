@@ -1,32 +1,17 @@
-package com.interlogicatest.phonechecker.utils;
+package com.interlogicatest.phonechecker.service;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.springframework.stereotype.Service;
 
 import com.interlogicatest.phonechecker.model.PhoneNumber;
+import com.interlogicatest.phonechecker.utils.TextUtilsEnum;
+import com.interlogicatest.phonechecker.utils.ValidationUtils;
 
-/**
- * This is a utils class which contains the methods that practically perform the number validation.
- * 
- * @author Fulvio Zecchin
- *
- */
-public class ValidationUtils {
+@Service
+public class ValidationServiceImpl implements ValidationService {
 	
-	//This is a regex which means "is not a number"
-	private final static String REGEX_FOR_REMOVE_NOT_NUMBER = "[^\\d+]";
-	
-	//This is a regex which meas "is a number"
-	private final static String REGEX_FOR_IDENTIFY_NUMBER = "[0-9]+";
-	
-	/**
-	 * It's a util method with business logic to validate the phone number.
-	 * @param id is the id of the row
-	 * @param number is the phone number
-	 * @return PhoneNumber is a model (correct or wrong)
-	 * 
-	 */
+	@Override
 	public PhoneNumber validateNumber(String id, String number) {
 		
 		//se inizia con 27
@@ -126,77 +111,4 @@ public class ValidationUtils {
 		return phoneNumber;
 	}
 	
-	//Remove all not digit chars from number
-	public static String clearString(String number) {
-		return number.replaceAll(REGEX_FOR_REMOVE_NOT_NUMBER, "");
-	}
-	
-	//Se uguale a 11 e solo numeri
-	public static boolean hasCorrectLengthAndOnlyDigits(String number) {
-		return ( (number.length() == 11) && hasOnlyDigits(number) );
-	}
-	
-	//Se contiene solo numeri
-	public static boolean hasOnlyDigits(String number) {
-		return number.matches(REGEX_FOR_IDENTIFY_NUMBER);
-	}
-	
-	//Checking correct length (11)
-	public static boolean checkLength(String number) {
-		return ( !(number.isBlank()) && (number.length() == 11) ) ? true : false;
-	}
-	
-	//Checking correct prefix (27)
-	public static boolean checkPrefix(String number) {
-		return ( !(number.isBlank()) && 
-				(
-					(number.startsWith(PhonePrefixesEnum.SOUTH_AFRICA.getValue())) ||
-					(number.startsWith(PhonePrefixesEnum.SOUTH_AFRICA_2.getValue())) ||
-					(number.startsWith(PhonePrefixesEnum.SOUTH_AFRICA_3.getValue()))
-				) 
-			   ) ? true : false;
-	}
-	
-	//Checking if missing only suffix
-	public static boolean checkMissingPrefix(String number) {
-		return ( !(number.isBlank()) && (number.length() == 9) ) ? true : false;
-	}
-	
-	//Checking if is smaller than 9 
-	public static boolean checkIsSmall(String number) {
-		return ( !(number.isBlank()) && (number.length() < 9)  ) ? true : false;
-	}
-	
-	//Checking if is bigger than 11 
-	public static boolean checkIsBig(String number) {
-		return ( !(number.isBlank()) && (number.length() > 11)  ) ? true : false;
-	}
-	
-	//Correct the phone number adding relative suffix
-	public static String addPrefix(String number) {
-		return PhonePrefixesEnum.SOUTH_AFRICA.getValue() + number;
-	}
-	
-	//Create the file headers
-	public static void createCorrectFileHEader(XSSFSheet sheet, boolean isCorrectFile) {
-		if(sheet != null) {
-			//Header Row
-			Row row = sheet.createRow(0);
-			
-			//Column for ID 
-			Cell cellID = row.createCell(0);
-			cellID.setCellValue(TextUtilsEnum.ROW_ID_HEADER.getText());
-			
-			//Column for Number
-			Cell cellNumber = row.createCell(1);
-			cellNumber.setCellValue(TextUtilsEnum.NUMBER_HEADER.getText());
-			
-			//Column for correction/error
-			Cell cellDescrError = row.createCell(2);
-			if(isCorrectFile) {
-				cellDescrError.setCellValue(TextUtilsEnum.CORRECTION_HEADER.getText());
-			} else cellDescrError.setCellValue(TextUtilsEnum.ERROR_HEADER.getText());
-		}
-		
-	}
 }

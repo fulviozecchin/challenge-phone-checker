@@ -2,6 +2,7 @@
 <html lang="it" xmlns:th="https://www.thymeleaf.org">
 	<head>
 		<title>Phone Checker App</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	</head>
 	
 	<body>
@@ -12,13 +13,13 @@
 		</h3> 
 	</p>
 	
-	<form th:action="@{/uploadExcelFile}" enctype="multipart/form-data" method="post">
+	<form th:action="@{/api/checknumber}">
 		<p>
 		<h4>Validazione manuale</h4>
 			<label for="phoneNumber">Inserisci qui un numero da validare:</label>
 			<input type="number" 
 				id="phoneNumber" 
-				name="phoneNumber" 
+				th:name="number" 
 				maxlength="11"
 				oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
 			<input type="submit" value="Valida">
