@@ -1,6 +1,7 @@
 package com.interlogicatest.phonechecker.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,14 +17,20 @@ public class ManageDataServiceImpl implements ManageDataService {
 	
 	@Override
 	public void insertNumber(PhoneNumber phoneNumber) {
-		phoneNumberRepository.save(phoneNumber);
+		try {
+			phoneNumberRepository.save(phoneNumber);
+		} catch(Exception e) {
+			throw new RuntimeException("Database Exception trying to insert phone number!", e);
+		}
 	}
 	
-	public List<PhoneNumber> getCorrectNumbers() {
+	@Override
+	public Optional<List<PhoneNumber>> getCorrectNumbers() {
 		return phoneNumberRepository.findByIsValidTrue();
 	}
 	
-	public List<PhoneNumber> getWrongNumbers() {
+	@Override
+	public Optional<List<PhoneNumber>> getWrongNumbers() {
 		return phoneNumberRepository.findByIsValidFalse();
 	}
 }

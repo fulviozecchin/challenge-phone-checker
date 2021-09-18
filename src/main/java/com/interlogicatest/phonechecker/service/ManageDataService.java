@@ -1,5 +1,8 @@
 package com.interlogicatest.phonechecker.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import com.interlogicatest.phonechecker.model.PhoneNumber;
 
 /**
@@ -11,4 +14,8 @@ import com.interlogicatest.phonechecker.model.PhoneNumber;
 public interface ManageDataService {
 
 	public void insertNumber(PhoneNumber phoneNumber);
+	
+	public Optional<List<PhoneNumber>> getCorrectNumbers();
+	
+	public Optional<List<PhoneNumber>> getWrongNumbers();
 }

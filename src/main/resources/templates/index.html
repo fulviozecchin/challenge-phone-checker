@@ -35,5 +35,22 @@
 		</p>
 		<input type="submit" value="Valida">
 	</form>
+	
+	<p>
+		<h4>Ottimo, il file e' stato correttamente validato!</h4>
+	</p>
+	
+	<form th:action="@{/api/createCorrectNumbersFile}">
+		<p>
+			<input type="submit" value="Scarica i numeri corretti">
+		</p>
+	</form>
+	
+	<form th:action="@{/api/createWrongNumbersFile}">
+		<p>
+			<input type="submit" value="Scarica i numeri errati">
+		</p>
+	</form>
+	
 	</body>
 </html>
