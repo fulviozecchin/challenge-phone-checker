@@ -1,7 +1,7 @@
 package com.interlogicatest.phonechecker.service;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,12 +25,12 @@ public class ManageDataServiceImpl implements ManageDataService {
 	}
 	
 	@Override
-	public Optional<List<PhoneNumber>> getCorrectNumbers() {
-		return phoneNumberRepository.findByIsValidTrue();
+	public List<PhoneNumber> getCorrectNumbers() {
+		return phoneNumberRepository.findByIsValidTrue().orElse(new ArrayList<PhoneNumber>());
 	}
 	
 	@Override
-	public Optional<List<PhoneNumber>> getWrongNumbers() {
-		return phoneNumberRepository.findByIsValidFalse();
+	public List<PhoneNumber> getWrongNumbers() {
+		return phoneNumberRepository.findByIsValidFalse().orElse(new ArrayList<PhoneNumber>());
 	}
 }

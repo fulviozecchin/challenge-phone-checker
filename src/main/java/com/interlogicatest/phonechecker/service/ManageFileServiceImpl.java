@@ -1,9 +1,13 @@
 package com.interlogicatest.phonechecker.service;
 
 import java.io.BufferedInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
@@ -136,5 +140,59 @@ public class ManageFileServiceImpl implements ManageFileService {
 	 
 	    cell = row.createCell(2);
 	    cell.setCellValue(number.getCorrectionOrErrorString());
+	}
+	
+	@Override
+	public void exportValidatedNumbers(boolean correct) {
+		
+		try {
+			
+			if(correct) {
+				ArrayList<PhoneNumber> correctNumbers = new ArrayList<PhoneNumber> (manageDataService.getCorrectNumbers());
+				
+				if(correctNumbers.size() > 0) {
+					System.out.println("Stiamo creando un file per i numeri corretti");
+					XSSFWorkbook workbookCorrectNum = new XSSFWorkbook();
+					XSSFSheet sheetCorrectNum = workbookCorrectNum.createSheet("Checked Numbers - Correct");
+					
+					int rowCount = 1;
+					ValidationUtils.createCorrectFileHeader(sheetCorrectNum, correct);
+					
+					for(PhoneNumber p : correctNumbers) {
+			    		Row r = sheetCorrectNum.createRow(++rowCount);
+			    		writeNumber(p, r);
+			    	}
+			    	
+			    	try (FileOutputStream outputStream = new FileOutputStream("FileCorrectNumbers.xlsx")) {
+			    		workbookCorrectNum.write(outputStream);
+			        }
+				}
+				
+			} else {
+				ArrayList<PhoneNumber> wrongNumbers = new ArrayList<PhoneNumber> (manageDataService.getWrongNumbers());
+				
+				if(wrongNumbers.size() > 0) {
+					
+					System.out.println("Stiamo creando un file per i numeri NON corretti");
+					XSSFWorkbook workbookWrongNum = new XSSFWorkbook();
+					XSSFSheet sheetWrongNum = workbookWrongNum.createSheet("Checked Numbers - Wrong");
+					
+					int rowCount = 1;
+					ValidationUtils.createCorrectFileHeader(sheetWrongNum, correct);
+					
+					for(PhoneNumber p : wrongNumbers) {
+			    		Row r = sheetWrongNum.createRow(++rowCount);
+			    		writeNumber(p, r);
+			    	}
+			    	
+			    	try (FileOutputStream outputStream = new FileOutputStream("FileCorrectNumbers.xlsx")) {
+			    		workbookWrongNum.write(outputStream);
+			        }
+				}
+			}
+		} catch (IOException e) {
+			System.out.println("Errore nella generazione del file.");
+			e.printStackTrace();
+		}
 	}
 }

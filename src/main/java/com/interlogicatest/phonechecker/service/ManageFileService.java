@@ -14,6 +14,12 @@ import com.interlogicatest.phonechecker.model.PhoneNumber;
 public interface ManageFileService {
 	
 	/**
+	 * Method to export in a file (.xlsx) all correct or wrong numbers.
+	 */
+	public abstract void exportValidatedNumbers(boolean correct);
+
+	
+	/**
 	 * Method to parse all rows in file and store data.
 	 * 
 	 * @param file is file to parse

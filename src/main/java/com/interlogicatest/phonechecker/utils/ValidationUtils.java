@@ -178,7 +178,7 @@ public class ValidationUtils {
 	}
 	
 	//Create the file headers
-	public static void createCorrectFileHEader(XSSFSheet sheet, boolean isCorrectFile) {
+	public static void createCorrectFileHeader(XSSFSheet sheet, boolean isCorrectFile) {
 		if(sheet != null) {
 			//Header Row
 			Row row = sheet.createRow(0);
