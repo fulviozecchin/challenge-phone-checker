@@ -1,13 +1,10 @@
 package com.interlogicatest.phonechecker.service;
 
 import java.io.BufferedInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
@@ -46,12 +43,6 @@ public class ManageFileServiceImpl implements ManageFileService {
             //Data Formatter
             DataFormatter formatter = new DataFormatter();
             
-            //List which will contains all correct number
-            ArrayList<PhoneNumber> correctNumber = new ArrayList<PhoneNumber>();
-            
-            //List which will contains all wrong number (if present)
-            ArrayList<PhoneNumber> wrongNumber = new ArrayList<PhoneNumber>();
- 
             for(Row row : sheet) {
             	
             	Cell idValue = row.getCell(0);
@@ -71,60 +62,10 @@ public class ManageFileServiceImpl implements ManageFileService {
             			
             			//persist object in db
             			manageDataService.insertNumber(result);
-            			
-//            			if(result.isValid()) correctNumber.add(result);
-//            			else wrongNumber.add(result);
             		}
             	}
             }
-            	
-        	//creating file with correct phone numbers
-//        	if(correctNumber.size() > 0) {
-//        		
-//        		System.out.println("Stiamo creando un file per i numeri corretti");
-//        		
-//        		XSSFWorkbook workbookCorrectNum = new XSSFWorkbook();
-//            	XSSFSheet sheetCorrectNum = workbookCorrectNum.createSheet("Checked Numbers");
-//            	
-//            	int rowCount = 1;
-//            	
-//            	//Create new file sheet header
-//            	ValidationUtils.createCorrectFileHEader(sheetCorrectNum, true);
-//            	
-//            	for(PhoneNumber p : correctNumber) {
-//            		Row r = sheetCorrectNum.createRow(++rowCount);
-//            		exportExcelService.writeNumber(p, r);
-//            	}
-//            	
-//            	try (FileOutputStream outputStream = new FileOutputStream("FileCorrectNumbers.xlsx")) {
-//            		workbookCorrectNum.write(outputStream);
-//                }
-//        	}
-            	
-        	//creating file with wrong phone numbers
-//        	if(wrongNumber.size() > 0) {
-//        		
-//        		System.out.println("Stiamo creando un file per i numeri NON corretti");
-//        		
-//        		XSSFWorkbook workbookWrongNum = new XSSFWorkbook();
-//            	XSSFSheet sheetWrongNum = workbookWrongNum.createSheet("Checked Numbers");
-//            	
-//            	int rowCount = 1;
-//            	
-//            	//Create new file sheet header
-//            	ValidationUtils.createCorrectFileHEader(sheetWrongNum, false);
-//            	
-//            	for(PhoneNumber p : wrongNumber) {
-//            		
-//            		Row r = sheetWrongNum.createRow(++rowCount);
-//            		exportExcelService.writeNumber(p, r);
-//            	}
-//            	
-//            	try (FileOutputStream outputStream = new FileOutputStream("FileWrongNumbers.xlsx")) {
-//            		workbookWrongNum.write(outputStream);
-//              }
-//        	}
-        } catch (Exception e) {
+         } catch (Exception e) {
             e.printStackTrace();
         }
 	}
@@ -146,12 +87,13 @@ public class ManageFileServiceImpl implements ManageFileService {
 	public void exportValidatedNumbers(boolean correct) {
 		
 		try {
-			
 			if(correct) {
 				ArrayList<PhoneNumber> correctNumbers = new ArrayList<PhoneNumber> (manageDataService.getCorrectNumbers());
 				
 				if(correctNumbers.size() > 0) {
+					
 					System.out.println("Stiamo creando un file per i numeri corretti");
+					
 					XSSFWorkbook workbookCorrectNum = new XSSFWorkbook();
 					XSSFSheet sheetCorrectNum = workbookCorrectNum.createSheet("Checked Numbers - Correct");
 					
@@ -163,7 +105,7 @@ public class ManageFileServiceImpl implements ManageFileService {
 			    		writeNumber(p, r);
 			    	}
 			    	
-			    	try (FileOutputStream outputStream = new FileOutputStream("FileCorrectNumbers.xlsx")) {
+			    	try (FileOutputStream outputStream = new FileOutputStream("src/main/resources/generated-result/FileCorrectNumbers.xlsx")) {
 			    		workbookCorrectNum.write(outputStream);
 			        }
 				}
@@ -174,6 +116,7 @@ public class ManageFileServiceImpl implements ManageFileService {
 				if(wrongNumbers.size() > 0) {
 					
 					System.out.println("Stiamo creando un file per i numeri NON corretti");
+					
 					XSSFWorkbook workbookWrongNum = new XSSFWorkbook();
 					XSSFSheet sheetWrongNum = workbookWrongNum.createSheet("Checked Numbers - Wrong");
 					
@@ -184,8 +127,8 @@ public class ManageFileServiceImpl implements ManageFileService {
 			    		Row r = sheetWrongNum.createRow(++rowCount);
 			    		writeNumber(p, r);
 			    	}
-			    	
-			    	try (FileOutputStream outputStream = new FileOutputStream("FileCorrectNumbers.xlsx")) {
+					
+			    	try (FileOutputStream outputStream = new FileOutputStream("src/main/resources/generated-result/FileWrongNumbers.xlsx")) {
 			    		workbookWrongNum.write(outputStream);
 			        }
 				}
