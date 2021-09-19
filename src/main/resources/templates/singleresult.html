@@ -4,21 +4,32 @@
 		<title>Phone Checker App</title>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 		<script th:src="@{/js/index.js}"></script>
+		<link th:href="@{/css/style.css}" rel="stylesheet" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 	</head>
 	
 	<body>
 		<div id="singleValidationResult">
-		<p>
-			<h2>Di seguito il risultato del numero da te inserito</h2>
-		</p>
-		<p>
-			<h5>Risultato validazione numero singolo</h5>
-			<span>Il numero che hai digitato e':</span><p th:text="${phoneNumber?.number}"></p>
-			
-			<p th:if="${phoneNumber?.isValid}">Il numero e' valido!</p>
-			<p th:unless="${phoneNumber?.isValid}">Il numero non e' valido.</p>
-			<p th:unless="${phoneNumber?.isValid}" th:text="${phoneNumber?.correctionOrError}"></p>
-		</p>
+			<p>
+				<h2>Risultato validazione</h2>
+			</p>
+			<div>
+				<table>
+					<tr>
+						<th>Numero inserito</th>
+						<th>Validita'</th>
+						<th>Modifica/Aggiunta Effettuata</th>
+					</tr>
+					<tr>
+						<td th:text="${phoneNumber?.number}">
+						<td th:text="${phoneNumber?.isValid} ? 'valido' : 'errato'">
+						<td th:text="${not #strings.isEmpty(phoneNumber?.correctionOrError)} ? 
+							${phoneNumber?.correctionOrError} : ' - '">
+					</tr>
+				</table>
+			</div>
 		</div>
 	</body>
 </html>
