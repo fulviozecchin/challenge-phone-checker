@@ -18,7 +18,7 @@
 		</h3> 
 	</p>
 	<hr/>
-	<form th:action="@{/api/checknumber}">
+	<form id="singleValidation" th:action="@{/checknumber}">
 		<p>
 		<h4>Validazione manuale</h4>
 			<label>Inserisci qui un numero da validare:</label>
@@ -28,6 +28,7 @@
 				maxlength="11"
 				oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
 			<input type="submit" id="validate" value="Valida">
+			<input type="reset" value="Reset">
 		</p>
 	</form>
 	
@@ -39,9 +40,10 @@
 			<label>Carica il file:</label>
 			<input type="file" id="file" name="file"
 				accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"><br><br>
-			<input type="button" id="removeFile" value="Rimuovi">
+			
 		</p>
 		<input type="submit" id="sendFile" value="Valida">
+		<input type="reset" id="resetFile" value="Reset">
 	</form>
 	
 	<hr/>
@@ -49,9 +51,12 @@
 			<p>
 				<h3>Ottimo, il file e' stato correttamente validato!</h3>
 				<h4>Puoi visionare i file al path: <i>'src/main/resources/generated-result'</i>.
+					<br/>
 					Qui troverai due file .xlsx.
-					Il file FileCorrectNumbers.xlsx conterra' i numeri in formato giusto e corretti.
-					Il file FileWrongNumbers.xlsx conterra' i numeri scartati in quanto non corretti.
+					<br/>
+					Il file <i>FileCorrectNumbers.xlsx</i> conterra' i numeri in formato giusto e corretti.
+					<br/>
+					Il file <i>FileWrongNumbers.xlsx</i> conterra' i numeri scartati in quanto non corretti.
 				</h4>
 			</p>
 

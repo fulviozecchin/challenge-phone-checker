@@ -11,9 +11,8 @@ $(document).ready(
 			}
 		);
 		
-		$('#removeFile').on('click', 
+		$('#resetFile').on('click', 
 		function() {
-			$('#file').val('');
 			$('#sendFile').hide();
 		}
 		);

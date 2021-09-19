@@ -80,7 +80,7 @@ public class ManageFileServiceImpl implements ManageFileService {
 	    cell.setCellValue(number.getNumber());
 	 
 	    cell = row.createCell(2);
-	    cell.setCellValue(number.getCorrectionOrErrorString());
+	    cell.setCellValue(number.getCorrectionOrError());
 	}
 	
 	@Override

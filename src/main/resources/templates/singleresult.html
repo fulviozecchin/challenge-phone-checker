@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="https://www.thymeleaf.org">
+	<head>
+		<title>Phone Checker App</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+		<script th:src="@{/js/index.js}"></script>
+	</head>
+	
+	<body>
+		<div id="singleValidationResult">
+		<p>
+			<h2>Di seguito il risultato del numero da te inserito</h2>
+		</p>
+		<p>
+			<h5>Risultato validazione numero singolo</h5>
+			<span>Il numero che hai digitato e':</span><p th:text="${phoneNumber?.number}"></p>
+			
+			<p th:if="${phoneNumber?.isValid}">Il numero e' valido!</p>
+			<p th:unless="${phoneNumber?.isValid}">Il numero non e' valido.</p>
+			<p th:unless="${phoneNumber?.isValid}" th:text="${phoneNumber?.correctionOrError}"></p>
+		</p>
+		</div>
+	</body>
+</html>

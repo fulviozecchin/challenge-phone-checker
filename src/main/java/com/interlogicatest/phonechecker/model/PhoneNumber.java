@@ -109,10 +109,10 @@ public class PhoneNumber {
 	public void setValid(boolean isValid) {
 		this.isValid = isValid;
 	}
-	public String getCorrectionOrErrorString() {
+	public String getCorrectionOrError() {
 		return correctionOrError;
 	}
-	public void setCorrectionOrErrorString(String correctionOrErrorString) {
-		this.correctionOrError = correctionOrErrorString;
+	public void setCorrectionOrError(String correctionOrError) {
+		this.correctionOrError = correctionOrError;
 	}
 }
