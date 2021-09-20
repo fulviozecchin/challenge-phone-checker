@@ -2,8 +2,6 @@
 
 Valida correttamente numeri di cellulare del Sudafrica
 
-*Read this in other languages: [English](README.EN.md).*
-
 # Indice
 
 - [Come iniziare](#come-iniziare)
