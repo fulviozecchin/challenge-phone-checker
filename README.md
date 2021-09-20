@@ -70,7 +70,7 @@ Il valore di default da inserire nel campo JDBC URL, sarà quindi: *jdbc:h2:mem:
 Nel file **application.properties** sono presenti le configurazioni relative ad H2 (compresi username
 e password, che saranno impostati di default come segue):  
 * User Name: sa  
-* Passwors:    
+* Password:    
 
 # Licenza 
 La licenza per questo progetto è di tipo **Apache License, Version 2.0**  
