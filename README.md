@@ -56,12 +56,30 @@ Come già detto poco sopra, tutte le dipendenze di sviluppo saranno scaricate ed
 da Maven, non appena importeremo il progetto nel nostro workspace.  
 
 ## Struttura del progetto
+Il progetto è strutturato seguendo i principi di buona programmazione, come la separazione delle responsabilità.  
+Nel path *com.interlogicatest.phonechecker* troviamo i package per ogni layer applicativo.  
+* *controller*: contiene i controller dell'applicazione  
+* *model*: contiene il model dell'applicazione  
+* *repository*: contiene i repository dell'applicazione per interfacciarsi con il database  
+* *service*: contiene quelle classi che si occupano della logica di business dell'applicazione (i service appunto)  
+* *utils*: contiene quelle classi 'Helper' di supporto per i i service.  
+
+Per la visualizzazione dei dati, nel database H2, una volta startata l'applicazione,
+è possibile recarsi al path *http://localhost:8080/h2*.  
+Da configurazione è un db temponaeo in memoria, questo vuol dire che ad ogni stop dell'applicazione,
+tutti i dati presenti in esso saranno cancellati.  
+Il valore di default da inserire nel campo JDBC URL, sarà quindi: *jdbc:h2:mem:testdb*.    
+Nel file **application.properties** sono presenti le configurazioni relative ad H2 (compresi username
+e password, che saranno impostati di default come segue):  
+* User Name: sa  
+* Passwors:    
 
 # Licenza 
-
-## Licenza generale 
+La licenza per questo progetto è di tipo **Apache License, Version 2.0**  
 
 ## Autori e Copyright
+*Fulvio Zecchin*  
+fulviozecchin3@gmail.com
 
 ## Licenze software dei componenti di terze parti
-
+Tutti gli strumenti ed i framework di ausilio utilizzati dall'applicazione, sono distribuiti con licenza **Open Source**.  
