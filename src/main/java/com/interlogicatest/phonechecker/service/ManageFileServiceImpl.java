@@ -112,7 +112,7 @@ public class ManageFileServiceImpl implements ManageFileService {
 			    		writeNumber(p, r);
 			    	}
 			    	
-					FileOutputStream outputStream = new FileOutputStream("src/main/resources/generated-result/FileCorrectNumbers.xlsx");
+					FileOutputStream outputStream = new FileOutputStream("FileCorrectNumbers.xlsx");
 					
 			    	try {
 			    		
@@ -144,7 +144,7 @@ public class ManageFileServiceImpl implements ManageFileService {
 			    		writeNumber(p, r);
 			    	}
 					
-					FileOutputStream outputStream = new FileOutputStream("src/main/resources/generated-result/FileWrongNumbers.xlsx");
+					FileOutputStream outputStream = new FileOutputStream("FileWrongNumbers.xlsx");
 			    	
 					try {
 						if(outputStream != null) workbookWrongNum.write(outputStream);
