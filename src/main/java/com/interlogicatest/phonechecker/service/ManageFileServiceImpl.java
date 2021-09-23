@@ -11,6 +11,8 @@ import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,6 +22,8 @@ import com.interlogicatest.phonechecker.utils.ValidationUtils;
 
 @Service
 public class ManageFileServiceImpl implements ManageFileService {
+	
+	private static final Logger log = LoggerFactory.getLogger(ManageFileServiceImpl.class);
 	
 	@Autowired
 	ValidationService validationService;
@@ -31,6 +35,8 @@ public class ManageFileServiceImpl implements ManageFileService {
 	public void saveNumbersByFile(MultipartFile file) {
 		
 		try {
+			
+			log.info("Start reading excel to store");
 			
 			InputStream is = new BufferedInputStream(file.getInputStream());
 			
@@ -67,6 +73,7 @@ public class ManageFileServiceImpl implements ManageFileService {
             }
          } catch (Exception e) {
             e.printStackTrace();
+            log.error("Error trying to persist data from file.");
         }
 	}
 	
@@ -92,7 +99,7 @@ public class ManageFileServiceImpl implements ManageFileService {
 				
 				if(correctNumbers.size() > 0) {
 					
-					System.out.println("Stiamo creando un file per i numeri corretti");
+					log.info("Starting creating correct numbers file");
 					
 					XSSFWorkbook workbookCorrectNum = new XSSFWorkbook();
 					XSSFSheet sheetCorrectNum = workbookCorrectNum.createSheet("Checked Numbers - Correct");
@@ -105,9 +112,18 @@ public class ManageFileServiceImpl implements ManageFileService {
 			    		writeNumber(p, r);
 			    	}
 			    	
-			    	try (FileOutputStream outputStream = new FileOutputStream("src/main/resources/generated-result/FileCorrectNumbers.xlsx")) {
-			    		workbookCorrectNum.write(outputStream);
-			        }
+					FileOutputStream outputStream = new FileOutputStream("src/main/resources/generated-result/FileCorrectNumbers.xlsx");
+					
+			    	try {
+			    		
+						workbookCorrectNum.write(outputStream);
+						outputStream.close();
+						
+					} catch (Exception e) {
+						log.error("Error trying to create correct numbers file");
+						e.printStackTrace();
+						
+					} finally {outputStream.close();}
 				}
 				
 			} else {
@@ -115,7 +131,7 @@ public class ManageFileServiceImpl implements ManageFileService {
 				
 				if(wrongNumbers.size() > 0) {
 					
-					System.out.println("Stiamo creando un file per i numeri NON corretti");
+					log.info("Starting creating wrong numbers file");
 					
 					XSSFWorkbook workbookWrongNum = new XSSFWorkbook();
 					XSSFSheet sheetWrongNum = workbookWrongNum.createSheet("Checked Numbers - Wrong");
@@ -128,13 +144,18 @@ public class ManageFileServiceImpl implements ManageFileService {
 			    		writeNumber(p, r);
 			    	}
 					
-			    	try (FileOutputStream outputStream = new FileOutputStream("src/main/resources/generated-result/FileWrongNumbers.xlsx")) {
-			    		workbookWrongNum.write(outputStream);
-			        }
+					FileOutputStream outputStream = new FileOutputStream("src/main/resources/generated-result/FileWrongNumbers.xlsx");
+			    	
+					try {
+						if(outputStream != null) workbookWrongNum.write(outputStream);
+			    	} catch (Exception e) {
+			    		log.error("Error trying to create wrong numbers file");
+						e.printStackTrace();
+					} finally {outputStream.close();}
 				}
 			}
 		} catch (IOException e) {
-			System.out.println("Errore nella generazione del file.");
+			log.error("Error trying to export data to generate result file");
 			e.printStackTrace();
 		}
 	}

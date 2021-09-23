@@ -3,6 +3,8 @@ package com.interlogicatest.phonechecker.utils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.interlogicatest.phonechecker.model.PhoneNumber;
 
@@ -13,6 +15,9 @@ import com.interlogicatest.phonechecker.model.PhoneNumber;
  *
  */
 public class ValidationUtils {
+	
+	//Logger
+	private static final Logger log = LoggerFactory.getLogger(ValidationUtils.class);
 	
 	//This is a regex which means "is not a number"
 	private final static String REGEX_FOR_REMOVE_NOT_NUMBER = "[^\\d+]";
@@ -28,6 +33,8 @@ public class ValidationUtils {
 	 * 
 	 */
 	public static PhoneNumber validateNumber(String id, String number) {
+		
+		log.debug("Validation for number id {}, number {}", id, number);
 		
 		//If starts with 27
 		if(ValidationUtils.checkPrefix(number)) {
