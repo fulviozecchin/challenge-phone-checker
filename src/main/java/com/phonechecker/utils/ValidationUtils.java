@@ -1,4 +1,4 @@
-package com.interlogicatest.phonechecker.utils;
+package com.phonechecker.utils;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -6,7 +6,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.interlogicatest.phonechecker.model.PhoneNumber;
+import com.phonechecker.model.PhoneNumber;
 
 /**
  * This is a utils class which contains the methods that practically perform the number validation.

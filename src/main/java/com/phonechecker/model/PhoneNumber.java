@@ -1,4 +1,4 @@
-package com.interlogicatest.phonechecker.model;
+package com.phonechecker.model;
 
 import javax.persistence.*;
 

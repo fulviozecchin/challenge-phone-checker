@@ -1,8 +1,8 @@
-package com.interlogicatest.phonechecker.service;
+package com.phonechecker.service;
 
 import java.util.List;
 
-import com.interlogicatest.phonechecker.model.PhoneNumber;
+import com.phonechecker.model.PhoneNumber;
 
 /**
  * This interface contains methods which regarding the database management.

@@ -1,4 +1,4 @@
-package com.interlogicatest.phonechecker.controller;
+package com.phonechecker.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,8 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.interlogicatest.phonechecker.model.PhoneNumber;
-import com.interlogicatest.phonechecker.service.ValidationService;
+import com.phonechecker.model.PhoneNumber;
+import com.phonechecker.service.ValidationService;
 
 @Controller
 public class HomeController {

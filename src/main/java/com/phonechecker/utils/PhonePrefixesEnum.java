@@ -1,4 +1,4 @@
-package com.interlogicatest.phonechecker.utils;
+package com.phonechecker.utils;
 
 /**
  * This Enumeration represents the possible prefixes valid for a South African telephone number.

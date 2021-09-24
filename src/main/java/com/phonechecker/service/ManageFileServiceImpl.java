@@ -1,4 +1,4 @@
-package com.interlogicatest.phonechecker.service;
+package com.phonechecker.service;
 
 import java.io.BufferedInputStream;
 import java.io.FileOutputStream;
@@ -17,8 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.interlogicatest.phonechecker.model.PhoneNumber;
-import com.interlogicatest.phonechecker.utils.ValidationUtils;
+import com.phonechecker.model.PhoneNumber;
+import com.phonechecker.utils.ValidationUtils;
 
 @Service
 public class ManageFileServiceImpl implements ManageFileService {

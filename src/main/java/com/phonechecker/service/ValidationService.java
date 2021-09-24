@@ -1,6 +1,6 @@
-package com.interlogicatest.phonechecker.service;
+package com.phonechecker.service;
 
-import com.interlogicatest.phonechecker.model.PhoneNumber;
+import com.phonechecker.model.PhoneNumber;
 
 /**
  * This interface contains methods which regarding the phone number validation.

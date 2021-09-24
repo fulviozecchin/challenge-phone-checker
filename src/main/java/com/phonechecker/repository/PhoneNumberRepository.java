@@ -1,11 +1,11 @@
-package com.interlogicatest.phonechecker.repository;
+package com.phonechecker.repository;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.interlogicatest.phonechecker.model.PhoneNumber;
+import com.phonechecker.model.PhoneNumber;
 
 public interface PhoneNumberRepository extends JpaRepository<PhoneNumber, Long> {
 	

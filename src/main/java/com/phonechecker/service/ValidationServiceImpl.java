@@ -1,9 +1,9 @@
-package com.interlogicatest.phonechecker.service;
+package com.phonechecker.service;
 
 import org.springframework.stereotype.Service;
 
-import com.interlogicatest.phonechecker.model.PhoneNumber;
-import com.interlogicatest.phonechecker.utils.ValidationUtils;
+import com.phonechecker.model.PhoneNumber;
+import com.phonechecker.utils.ValidationUtils;
 
 @Service
 public class ValidationServiceImpl implements ValidationService {

@@ -1,4 +1,4 @@
-package com.interlogicatest.phonechecker.utils;
+package com.phonechecker.utils;
 
 /**
  * This enum contains all the texts that are used in the application.

@@ -1,9 +1,9 @@
-package com.interlogicatest.phonechecker.service;
+package com.phonechecker.service;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.interlogicatest.phonechecker.model.PhoneNumber;
+import com.phonechecker.model.PhoneNumber;
 
 /**
  * This interface contains methods which regarding the excel file creation.
