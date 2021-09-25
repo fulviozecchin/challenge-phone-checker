@@ -2,6 +2,8 @@
 
 Valida correttamente numeri di cellulare del Sudafrica
 
+*Read this in other languages: [English](README.EN.md).*
+
 # Indice
 
 - [Come iniziare](#come-iniziare)
@@ -64,7 +66,7 @@ Nel path *com.interlogicatest.phonechecker* troviamo i package per ogni layer ap
 
 Per la visualizzazione dei dati, nel database H2, una volta startata l'applicazione,
 è possibile recarsi al path *http://localhost:8080/h2*.  
-Da configurazione è un db temponaeo in memoria, questo vuol dire che ad ogni stop dell'applicazione,
+Da configurazione è un db temporanaeo in memoria, questo vuol dire che ad ogni stop dell'applicazione,
 tutti i dati presenti in esso saranno cancellati.  
 Il valore di default da inserire nel campo JDBC URL, sarà quindi: *jdbc:h2:mem:testdb*.    
 Nel file **application.properties** sono presenti le configurazioni relative ad H2 (compresi username
