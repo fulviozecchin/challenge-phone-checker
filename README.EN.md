@@ -13,7 +13,7 @@ The application allows you to validate phone numbers in South African format (27
 It offers the possibility of validating a single number, typed manually,
 or of massively validating several numbers by uploading a file (supported formats .csv, xls, .xlsx).  
 In case of *Manual validation*, when clicking the "Validate" button (in the manual section), it will show the result in a new page.    
-In case of *Massively validation * when clicking the "Validate" button (in the massive section), it will generate two .xlsx files
+In case of *Massively validation* when clicking the "Validate" button (in the massive section), it will generate two .xlsx files
 which contain the result of validation of uploaded file.  
 * *FileCorrectNumbers.xlsx* will contains all correct and modified numbers    
 * *FileWrongNumbers.xlsx* will contains all wrong numbers  
