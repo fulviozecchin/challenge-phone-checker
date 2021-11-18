@@ -1,6 +1,15 @@
 # challenge-phone-checker
 
-Valid South African mobile phone numbers correctly
+This baby project was born as a code challenge requested by a company to evaluate the level of thinking in facing a challenge in a short time and with few requirements.
+They wanted to build from scratch an application that would validate phone numbers in the South African format.
+A user can then connect to a simple web page and manually enter the number to be validated, or upload a file (.csv, .xlsx) for a massive validation.
+Independently from the chosen method, if the number is not correct, the application will try to signal useful and/or self-correcting suggestions (for example, if the prefix +27 has been forgotten).
+If, on the other hand, the number entered (or a record in the case of a massive number) is not valid, and does not aspire to be valid even when corrected, the application will inform you of its invalidity, and the reason why the number was discarded.
+
+
+*I'm absolutely aware that the code in this project could have been thought and written (much) better; however it must be emphasized that this challenge was made in 5 days, after 10-12 hours of daily work (between work and university), using what little time (and creativity) I had left.
+Of course I could have modified it and made it better in time, after its delivery, but it would have lost its main objective: the truthfulness and authenticity of a work done intentionally in a short time, in a completely new context, from scratch.*
+
 
 # Contents
 
