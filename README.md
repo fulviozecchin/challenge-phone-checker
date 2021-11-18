@@ -7,7 +7,7 @@ Indipendentemente dal metodo scelto, qualora il numero non fosse corretto, l'app
 Qualora invece il numero inserito (o un record in caso massivo) non fosse valido, né aspirante tale neppure correggendolo, l'applicazione informerà della sua invalidità, e del motivo per cui il numero è stato scartato.
 
 
-*Sono assolutamente consapevole che il codice presente in questo progetto poteva essere pensato e scritto (molto) meglio; tuttavia è doveroso sottolineare che questa challenge è stata fatta in 5 giorni, dopo 10-12 ore di lavoro giornaliere (tra lavoro ed università), utilizzando quel poco di tempo (e di fantasia) che mi rimaneva.
+*Sono assolutamente consapevole che il codice presente in questo progetto poteva essere pensato e scritto (molto) meglio; tuttavia è doveroso sottolineare che questa challenge è stata fatta in 5 giorni, dopo 10-12 ore di lavoro giornaliere (tra lavoro ed università), utilizzando quel poco di tempo (e di fantasia) che mi rimaneva.  
 Certamente avrei potuto modificarla e renderla migliore nel tempo, dopo la sua consegna, ma avrebbe perso il suo obiettivo principale: la veridicità e l'autenticità di un lavoro fatto volutamente in breve tempo, in un contesto del tutto nuovo, da zero.*
 
 
@@ -24,6 +24,7 @@ Certamente avrei potuto modificarla e renderla migliore nel tempo, dopo la sua c
 L'applicazione permette di validare numeri di telefono nel formato Sudafricano (27812738127 formato corretto).  
 Offre la possibilità di validare puntualmente un numero inserito maualmente, oppure di validare massivamente
 più numeri, mediate l'upload di un file (formati supportati .xlsx, .xls, .csv).  
+**Il formato corretto del file per la validazione massiva è nella root folder con il nome "Massive Check File.xlsx"**.  
 La validazione manuale, al click del bottone "Valida" (della sezione manuale), mostrerà il risultato in una nuova pagina.  
 La validazione massiva, al click del bottone "Valida" (della sezione massiva), genererà due file in formato .xlsx
 contenenti i risultati della validazione del file caricato.  
