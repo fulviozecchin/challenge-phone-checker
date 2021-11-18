@@ -1,6 +1,16 @@
 # challenge-phone-checker
 
-Valida correttamente numeri di cellulare del Sudafrica
+Questo baby-progetto nasce come code challenge richiesta da una società per valutare il livello di pensiero nell'affrontare una sfida appunto, in poco tempo e con pochi requisiti.
+Si voleva costruire da zero un'applicazione che validasse i numeri di telefono nel formato sudafricano.
+Un utente può quindi collegarsi ad una semplice pagina web ed inserire manualmente il numero da validare, oppure caricare un file (.csv, .xlsx) per una validazione massiva.
+Indipendentemente dal metodo scelto, qualora il numero non fosse corretto, l'applicazione proverà a segnalare suggerimenti utili e/o autocorrettivi (ad esempio se si è scordato il prefisso +27).
+Qualora invece il numero inserito (o un record in caso massivo) non fosse valido, né aspirante tale neppure correggendolo, l'applicazione informerà della sua invalidità, e del motivo per cui il numero è stato scartato.
+
+
+*Sono assolutamente consapevole che il codice presente in questo progetto poteva essere pensato e scritto (molto) meglio; tuttavia è doveroso sottolineare che questa challenge è stata fatta in 5 giorni, dopo 10-12 ore di lavoro giornaliere (tra lavoro ed università), utilizzando quel poco di tempo (e di fantasia) che mi rimaneva.
+Certamente avrei potuto modificarla e renderla migliore nel tempo, dopo la sua consegna, ma avrebbe perso il suo obiettivo principale: la veridicità e l'autenticità di un lavoro fatto volutamente in breve tempo, in un contesto del tutto nuovo, da zero.*
+
+
 
 *Read this in other languages: [English](README.EN.md).*
 
