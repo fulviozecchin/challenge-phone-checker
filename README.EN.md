@@ -21,6 +21,7 @@ Of course I could have modified it and made it better in time, after its deliver
 The application allows you to validate phone numbers in South African format (27812738127 correct format).    
 It offers the possibility of validating a single number, typed manually,
 or of massively validating several numbers by uploading a file (supported formats .csv, xls, .xlsx).  
+**The correct file format for the massive validation is in the root folder with the name "Massive Check File.xlsx "**.  
 In case of *Manual validation*, when clicking the "Validate" button (in the manual section), it will show the result in a new page.    
 In case of *Massively validation* when clicking the "Validate" button (in the massive section), it will generate two .xlsx files
 which contain the result of validation of uploaded file.  
